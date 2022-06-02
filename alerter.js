@@ -14,9 +14,9 @@ function networkAlertStub(celcius) {
     }
 }
 
-function alertInCelcius(farenheit) {
+function alertInCelcius(farenheit, callback) {
     const celcius = (farenheit - 32) * 5 / 9;
-    const returnCode = networkAlertStub(celcius);
+    const returnCode = callback(celcius); //networkAlertStub(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
@@ -26,7 +26,7 @@ function alertInCelcius(farenheit) {
     }
 }
 
-alertInCelcius(400.5);
+alertInCelcius(400.5, networkAlertStub);
 expect(alertFailureCount).equals(1);
 alertInCelcius(303.6);
 console.log(`${alertFailureCount} alerts failed.`);
