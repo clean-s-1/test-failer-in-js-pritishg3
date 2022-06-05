@@ -16,11 +16,11 @@ jobs:
       - name: Install Dependncies
         run:  sudo npm install
       
-      - name: tshirts fail
+      - name: tshirts success
         run: "node tshirts.js"
 
-      - name: misaligned fail
+      - name: misaligned success
         run: "node misaligned.js"
 
-      - name: alerter fail
+      - name: alerter success
         run: "node alerter.js"
